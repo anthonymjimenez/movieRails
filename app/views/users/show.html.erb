@@ -1,2 +1,7 @@
-<h1><%= @user.name %> Profile </h1>
+<h1><%= @user.name %>'s Profile </h1>
 
+<h2>Favorites</h2>
+
+<% @user.favorites.each do |favorite| %>
+    <li><%= link_to favorite.movie.title, movie_path(favorite.movie) %>
+<%end%>

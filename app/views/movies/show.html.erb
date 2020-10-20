@@ -1,4 +1,39 @@
 
-<%= @movie %>
-<%= @movie[:title] %>
+<h1><%= @movie[:title] %></h1>
 
+<h2>Overview:</h2>
+<p><%= @movie.overview %> </p>
+
+<h2>Release Date:</h2>
+<%= @movie.release_date%><br>
+
+<h3>Favorites: <%= @movie.favorites.count %></h3>
+
+<h3>Reviews</h3>
+<% @movie.reviews.each do |review| %>
+    <%= review.inspect %>
+<%end%>
+
+
+<%= form_tag '/favorites' do %>
+    <br>
+    <%= hidden_field_tag :user_id, @current_user.id %>
+    <%= hidden_field_tag :movie_id, @movie.id %>
+
+    <%= submit_tag "Add Movie to Favorites" %>
+<%end%>
+
+<%= form_tag '/reviews' do %>
+    <br>
+  
+    <%= hidden_field_tag :user_id, @current_user.id %>
+    <%= hidden_field_tag :movie_id, @movie.id %>
+
+    <%= label_tag :title %>
+    <%= text_field_tag :title %><br>
+
+    <%= label_tag :content %>
+    <%= text_area_tag :content  %><br>
+
+    <%= submit_tag "Post Review" %>
+<%end%>

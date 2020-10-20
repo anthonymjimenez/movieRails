@@ -1,9 +1,8 @@
 <h1> Movie </h1>
-Page : <%= @movies[:page] %>
-<br>
-  <% @movies[:results].each do |m| %>
+
+  <% @movies.each do |m| %>
       <%=  link_to m[:title], movie_path(m[:id]) %>
       <br>
-    <% end %>
+  <% end %>
     
     
