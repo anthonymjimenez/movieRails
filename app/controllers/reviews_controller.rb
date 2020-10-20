@@ -8,8 +8,12 @@ class ReviewsController < ApplicationController
     
       def create
         review = Review.create(review_params)
-    
-        redirect_to movie_path(review.movie)
+        if review.save
+            redirect_to movie_path(review.movie)
+        else
+            flash[:errors] = review.errors.full_messages
+            redirect_back fallback_location: movies_path
+        end
       end
     
       private

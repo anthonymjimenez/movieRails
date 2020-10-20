@@ -5,3 +5,11 @@
 <% @user.favorites.each do |favorite| %>
     <li><%= link_to favorite.movie.title, movie_path(favorite.movie) %>
 <%end%>
+
+<h2>Reviews</h2>
+
+<% @user.reviews.each do |review| %>
+    <h4>Movie: <%= review.movie.title %></h4>
+    <h5><%= review.title %></h5>
+    <%= review.content %>
+<%end%>
