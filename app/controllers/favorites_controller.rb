@@ -1,16 +1,19 @@
-require 'json'
-
-class MoviesController < ApplicationController
-    
-    def index
-        @movies = getResponse('https://api.themoviedb.org/3/discover/movie?api_key=7d5fc19bc307c5d1ca314e7fb11bf51e')
+class FavoritesController < ApplicationController
+  ## maybe doesn't need a controller and instead can exist on user
+  ## User.favorites
+    def index #user#favorites
+        @favs = []
+        favorites.each { |elm| 
+            temp = getResponse("https://api.themoviedb.org/3/movie/#{elm}?api_key=7d5fc19bc307c5d1ca314e7fb11bf51e")
+            @favs.push(temp)
+    }
     end
 
-    def show
-        @movie = getResponse("https://api.themoviedb.org/3/movie/#{params[:id]}?api_key=7d5fc19bc307c5d1ca314e7fb11bf51e")
+    def favorites 
+        return [528085, 475430]
     end
 
-    private 
+    private
 
     def getResponse(url)
         newObj = {}
@@ -41,7 +44,7 @@ class MoviesController < ApplicationController
             }
         newArray[index] = tempObj
         }
-        return newArray
+
+        p newArray
     end
-    
 end
