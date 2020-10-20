@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
     def show
         @movie = getResponse("https://api.themoviedb.org/3/movie/#{params[:id]}?api_key=7d5fc19bc307c5d1ca314e7fb11bf51e")
     end
+
     private 
 
     def getResponse(url)
@@ -40,7 +41,6 @@ class MoviesController < ApplicationController
             }
         newArray[index] = tempObj
         }
-
-        p newArray
+        return newArray
     end
 end
