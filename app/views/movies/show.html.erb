@@ -1,6 +1,12 @@
 
 <h1><%= @movie[:title] %></h1>
 
+<% if @current_user.errors.any? %>
+  <% @current_user.errors.full_messages.each do |error| %>
+    <p style="color:red;"><%= error %></p>
+  <% end %>
+<% end %>
+
 <h2>Overview:</h2>
 <p><%= @movie.overview %> </p>
 
@@ -24,11 +30,9 @@
     <%= submit_tag "Add Movie to Favorites" %>
 <%end%>
 
-<% if flash[:my_errors] %>
-  <% flash[:my_errors].each do |error| %>
-    <p style="color:red;"><%= error %></p>
-  <% end %>
-<% end %>
+
+
+
 <%= form_tag '/reviews' do %>
     <br>
   

@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
-    def reset_page_count
-        # session[:view_count] = 0
-        session.delete(:view_count)
+    # def reset_page_count
+    #     # session[:view_count] = 0
+    #     session.delete(:view_count)
     
-        redirect_back fallback_location: bananas_path
-      end
+    #     redirect_back fallback_location: bananas_path
+    #   end
       
       def logout 
         session.delete(:user_id)
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       def new_login
       end 
     
-      def login 
+      def login
         # find user 
         @user = User.find_by(email: params[:session][:email])
     

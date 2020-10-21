@@ -48,6 +48,6 @@ movies[:results].each do |x|
     Movie.create(title: x[:title], overview: x[:overview], release_date: x[:release_date] )
 end
 
-
+u = User.create(name: "m", username: "m", email: "m@m.com", password: "p")
 #byebug
 0

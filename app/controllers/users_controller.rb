@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+   skip_before_action :authorized?, only: [:new, :create]
+
     before_action :find_user, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -10,6 +12,8 @@ class UsersController < ApplicationController
     end
 
     def create 
+        #p user_params
+        p params[:name]
         user = User.create(user_params)
     
         if user.valid? 

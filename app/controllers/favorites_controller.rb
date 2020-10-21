@@ -7,12 +7,30 @@ class FavoritesController < ApplicationController
 
     @users = User.all
     @movies = Movie.all
+    
   end
 
   def create
-    favorite = Favorite.create(favorite_params)
+    @current_user = User.find_by(id: session[:user_id])
+    fav = Favorite.new(favorite_params)
+    if @current_user.allMovieIDs.include?(fav.movie_id)
+      @current_user.errors.add(:movie_id, "Cannot favorite the same movie more than once")
+      redirect_back fallback_location: movies_path
+      
+    else
 
-    redirect_to movie_path(favorite.movie)
+      fav.save
+      redirect_to movie_path(fav.movie)
+    end
+    
+    # @current_user.favorites.each do |favorite|
+    #   if favorite.movie_id == fav.movie_id
+    #     redirect_back fallback_location: movies_path
+    #   else
+    #     favorite.save
+    #     redirect_to movie_path(favorite.movie)
+    #   end
+    # end
   end
 
   private

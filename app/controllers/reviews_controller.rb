@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
     def new
-        @review = review.new
-    
+        @review = Review.new
         @users = User.all
         @movies = Movie.all
       end
