@@ -10,6 +10,18 @@
   </head>
 
   <body>
+  <ul class="nav">
+      <li><a href="<%= movies_path %>">Movies</a></li>
+      <li><a href="<%= user_path(@current_user) %>">Profile</a></li>
+
+      <% if @current_user %>
+        <li class="right">Welcome <%= @current_user.username %>!</li>
+        <li class="right"><%= link_to "Log Out", logout_path, method: :delete %></li>
+      <% else %>
+        <li class="right"><a href="<%= new_user_path %>">Sign Up!</a></li>
+        <li class="right"><a href="<%= new_login_path %>">Login!</a></li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>

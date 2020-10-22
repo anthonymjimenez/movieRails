@@ -1,26 +1,17 @@
 <link rel ='stylesheet' href = 'index.css'/>
-<% if @current_user %>
-  <div class = 'signed-in'>
-  <%= link_to "Profile", user_path(@current_user), class:"button" %>
-  <%= button_to "Logout", logout_path, method: :delete, class:"button" %>
-  </div>
-<%else%>
-  <div class = 'not-signed-in'>
-  <%= link_to "Sign In", new_login_path %>
-  <%= link_to "Signup", new_user_path %>
-  </div>
-<%end%>
-
-
+<div class ='wrapper'>
 
 <h1 class='movie-header'> Movies </h1>
 
+<div class='movies'>
+
   <% @movies.each do |m| %>
-    <div class = "movie">
+  
     <% movie_poster = image_tag "https://image.tmdb.org/t/p/w200#{m.poster}" %>
-    <%=  link_to movie_poster, movie_path(m[:id]) %>
+  <%=  link_to movie_poster, movie_path(m[:id]) %>
       <br>
-      </div>
+ 
   <% end %>
-    
-    
+
+    </div>
+</div>

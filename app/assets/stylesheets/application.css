@@ -13,3 +13,97 @@
  *= require_tree .
  *= require_self
  */
+ @font-face{
+    font-family: blockbuster;
+    src: url("Blockbuster.ttf");
+  }
+  h1{
+    font-family: blockbuster;
+  }
+
+  html {
+      background-color: rgb(56, 56, 56);
+  }
+
+  .wrapper {
+      display: grid;
+      grid-template-areas: "title title"
+                            "poster info"
+                            "add-fav favorites"
+                            "review-form review-form"
+                            "reviews reviews";
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    
+  }
+
+  .title {
+      grid-area: title;
+  }
+
+  .show-image{
+      grid-area: poster;
+  }
+
+  .info{
+      grid-area: info;
+  }
+
+  .favorites{
+      grid-area: favorites;
+  }
+  .add-fav{
+      grid-area: add-fav;
+  }
+
+  .reviews{
+      grid-area: reviews;
+  }
+
+  .review-form{
+      grid-area: review-form;
+  }
+
+ .banner-img {
+    width: 100%;
+   }
+  
+   .banner {
+     width: 85%;
+     margin: 0px auto;
+  
+   }
+  
+   .nav {
+    background-color:#3D7DCA;
+    height: 40px;
+    width: 85%;
+    margin: 0px auto;
+  }
+  
+   .nav li {
+     /* border: 1px solid black; */
+     display: inline-block;
+     line-height: 40px;
+     padding: 0px 15px;
+     margin: 0px;
+  
+   }
+  
+   .nav li:hover {
+     background-color: whitesmoke;
+     transition: 1s;
+   }
+  
+   .nav li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+  }
+  
+  
+  .right {
+    float: right;
+  }
