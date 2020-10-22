@@ -15,8 +15,6 @@
 <h2>Release Date:</h2>
 <%= @movie.release_date%><br>
 
-</div>
-<div class= "favorites" >
 <h3>Favorites: <%= @movie.favorites.count %></h3>
 </div>
 
@@ -26,16 +24,19 @@
     <%= hidden_field_tag :user_id, @current_user.id %>
     <%= hidden_field_tag :movie_id, @movie.id %>
 
-    <%= submit_tag "Add Movie to Favorites" %>
+    <%= submit_tag("Add Movie to Favorites", :class => "add-fav-btn") %>
 <%end%>
 </div>
 
 <div class= "reviews">
 <h3>Reviews</h3>
+<div class = 'review-wrap'>
 <% @movie.reviews.each do |review| %>
-    <h4><%= review.title %></h4>
-    <p><%= review.content %></p>
+    
+    <h4 class = 'review-head'>@<%= "#{review.user.username} - #{review.title}" %></h4>
+    <p class ='review-body'><%= review.content %></p>
 <%end%>
+</div>
 </div>
 
 <div class= "review-form">

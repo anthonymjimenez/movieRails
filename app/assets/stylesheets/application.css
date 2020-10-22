@@ -29,18 +29,21 @@
       display: grid;
       grid-template-areas: "title title"
                             "poster info"
-                            "add-fav favorites"
+                            "add-fav add-fav"
                             "review-form review-form"
                             "reviews reviews";
 
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-    
+    max-width: 50vw;
+    font-color: rebeccapurple;
+
   }
 
   .title {
       grid-area: title;
+      text-align: center;
+      font-size: 55px;
   }
 
   .show-image{
@@ -49,14 +52,83 @@
 
   .info{
       grid-area: info;
+      text-align: center;
   }
 
   .favorites{
       grid-area: favorites;
+      text-align: center;
   }
+  .add-fav-btn {
+    box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #810e05;
+    
+
+  }
+
+  .add_fav-btn:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+.add_fav-btn:active {
+	position:relative;
+	top:1px;
+}
+
+  
   .add-fav{
-      grid-area: add-fav;
+    grid-area: add-fav;
   }
+    
+  .review-head {
+    font-size: 25px;
+    color: rebeccapurple;
+    background-color: black;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+  .review-body {
+   
+    background-color: wheat;
+  }
+
+
+  .review-wrap {
+    padding: 1rem;
+    width: 420px;
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+      0 5px 15px 0 rgba(0,0,0,0.08);
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    
+    border-left: 0 solid #00ff99;
+    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+  }
+  
+  .review-wrap:hover {
+    padding-left: 0.5rem;
+    border-left: 0.5rem solid #00ff99;
+  }
+  
+  .review-wrap > :first-child {
+    margin-top: 0;
+  }
+  
+  .review-wrap > :last-child {
+    margin-bottom: 0;
+  }
+  
 
   .reviews{
       grid-area: reviews;
@@ -64,6 +136,7 @@
 
   .review-form{
       grid-area: review-form;
+      text-align: center;
   }
 
  .banner-img {
@@ -77,7 +150,7 @@
    }
   
    .nav {
-    background-color:#3D7DCA;
+    background-color:#a2a4a7;
     height: 40px;
     width: 85%;
     margin: 0px auto;
