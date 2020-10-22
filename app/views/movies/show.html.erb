@@ -1,3 +1,13 @@
+<% if @current_user %>
+  <%= link_to "Profile", user_path(@current_user) %>
+  <%= button_to "Logout", logout_path, method: :delete%>
+<%else%>
+  <%= link_to "Sign In", new_login_path %>
+  <%= link_to "Signup", new_user_path %>
+<%end%>
+ 
+
+
 
 <h1><%= @movie[:title] %></h1>
 
@@ -6,7 +16,7 @@
     <p style="color:red;"><%= error %></p>
   <% end %>
 <% end %>
-
+<%= image_tag "https://image.tmdb.org/t/p/w200#{@movie.poster}" %>
 <h2>Overview:</h2>
 <p><%= @movie.overview %> </p>
 
@@ -15,11 +25,7 @@
 
 <h3>Favorites: <%= @movie.favorites.count %></h3>
 
-<h3>Reviews</h3>
-<% @movie.reviews.each do |review| %>
-    <h4><%= review.title %></h4>
-    <p><%= review.content %></p>
-<%end%>
+
 
 
 <%= form_tag '/favorites' do %>
@@ -30,9 +36,13 @@
     <%= submit_tag "Add Movie to Favorites" %>
 <%end%>
 
+<h3>Reviews</h3>
+<% @movie.reviews.each do |review| %>
+    <h4><%= review.title %></h4>
+    <p><%= review.content %></p>
+<%end%>
 
-
-
+<h2>Write A Review</h2>
 <%= form_tag '/reviews' do %>
     <br>
   

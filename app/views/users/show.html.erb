@@ -1,3 +1,11 @@
+<% if @current_user %>
+  <%= button_to "Logout", logout_path, method: :delete%>
+  <%= link_to "Movies", movies_path %>
+<%else%>
+  <%= link_to "Sign In", new_login_path %>
+  <%= link_to "Signup", new_user_path %>
+<%end%>
+
 <h1><%= @user.name %>'s Profile </h1>
 
 <h2>Favorites</h2>
@@ -7,9 +15,10 @@
 <%end%>
 
 <h2>Reviews</h2>
-
 <% @user.reviews.each do |review| %>
     <h4>Movie: <%= review.movie.title %></h4>
     <h5><%= review.title %></h5>
     <%= review.content %>
+
+    <%= button_to "Delete Review", review, method: :delete %>
 <%end%>

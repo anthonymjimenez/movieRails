@@ -45,8 +45,9 @@ movies = getResponse('https://api.themoviedb.org/3/discover/movie?api_key=7d5fc1
 
 
 movies[:results].each do |x|
-    Movie.create(title: x[:title], overview: x[:overview], release_date: x[:release_date] )
+    Movie.create(title: x[:title], overview: x[:overview], release_date: x[:release_date], poster: x[:poster_path] )
 end
+
 
 u = User.create(name: "m", username: "m", email: "m@m.com", password: "p")
 #byebug

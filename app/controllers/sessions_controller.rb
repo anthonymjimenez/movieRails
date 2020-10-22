@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       def logout 
         session.delete(:user_id)
         
-        redirect_back fallback_location: bananas_path
+        redirect_back fallback_location: movies_path
       end 
     
       def new_login

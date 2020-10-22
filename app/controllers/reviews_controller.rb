@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  
     def new
         @review = Review.new
         @users = User.all
@@ -13,6 +14,12 @@ class ReviewsController < ApplicationController
             flash[:errors] = review.errors.full_messages
             redirect_back fallback_location: movies_path
         end
+      end
+
+      def destroy
+        @review = Review.find(params[:id])
+        @review.delete
+        redirect_back fallback_location: movies_path
       end
     
       private

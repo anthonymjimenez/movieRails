@@ -11,26 +11,16 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @current_user = User.find_by(id: session[:user_id])
     fav = Favorite.new(favorite_params)
+    @current_user = User.find_by(id: session[:user_id])
     if @current_user.allMovieIDs.include?(fav.movie_id)
-      @current_user.errors.add(:movie_id, "Cannot favorite the same movie more than once")
+        @current_user.errors.add(:movie_id, "Cannot favorite the same movie more than once")
+        redirect_back fallback_location: movies_path
+    else
+      fav.save
       redirect_back fallback_location: movies_path
       
-    else
-
-      fav.save
-      redirect_to movie_path(fav.movie)
     end
-    
-    # @current_user.favorites.each do |favorite|
-    #   if favorite.movie_id == fav.movie_id
-    #     redirect_back fallback_location: movies_path
-    #   else
-    #     favorite.save
-    #     redirect_to movie_path(favorite.movie)
-    #   end
-    # end
   end
 
   private
@@ -39,50 +29,5 @@ class FavoritesController < ApplicationController
     p params
     params.permit(:movie_id, :user_id)
   end
-    # def index #user#favorites
-    #     @favs = []
-    #     favorites.each { |elm| 
-    #         temp = getResponse("https://api.themoviedb.org/3/movie/#{elm}?api_key=7d5fc19bc307c5d1ca314e7fb11bf51e")
-    #         @favs.push(temp)
-    # }
-    # end
-
-    # def favorites 
-    #     return [528085, 475430]
-    # end
-
-    # private
-
-    # def getResponse(url)
-    #     newObj = {}
-    #     var = RestClient.get(url) 
-    #     var = JSON.parse(var.body)
-    #     return createSymbols(var)
-    # end
-
-    # def createSymbols(hash)
-    #     newObj = {}
-    #     hash.each { |key, value|
-    #     ##ternary?  
-    #         if(value.is_a?(Array))
-    #             newObj[key.to_sym] = createSymbolsFromArray(value)
-    #         else 
-    #             newObj[key.to_sym] = value
-    #         end
-    #         }
-    #     return newObj
-    # end
-
-    # def createSymbolsFromArray(array)
-    #     newArray = []
-    #     array.each_with_index { |elm, index|
-    #         tempObj = {}
-    #         elm.each { |key, value| 
-    #             tempObj[key.to_sym] = value
-    #         }
-    #     newArray[index] = tempObj
-    #     }
-
-    #     p newArray
-    # end
+    
 end

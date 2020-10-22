@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_204946) do
     t.string "title"
     t.text "overview"
     t.string "release_date"
+    t.string "poster"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
