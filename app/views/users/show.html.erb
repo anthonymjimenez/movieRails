@@ -1,24 +1,37 @@
-<% if @current_user %>
-  <%= button_to "Logout", logout_path, method: :delete%>
-  <%= link_to "Movies", movies_path %>
-<%else%>
-  <%= link_to "Sign In", new_login_path %>
-  <%= link_to "Signup", new_user_path %>
-<%end%>
+<link rel ='stylesheet' href = 'profile.css'/>
+<div class="profile-wrapper">
 
-<h1><%= @user.name %>'s Profile </h1>
+<div class= 'profile-info'>
+<div class = 'profile-header'>My Profile </div>
+<p> Username:
+<%= @user.username %></p>
 
-<h2>Favorites</h2>
+<p>Email:
+<%= @user.email %></p>
 
+</div>
+
+
+<div class="user-favorites">
+<div class="favorites-header">Favorites</div>
 <% @user.favorites.each do |favorite| %>
     <li><%= link_to favorite.movie.title, movie_path(favorite.movie) %>
 <%end%>
 
+</div>
+
+<div class= "user-reviews">
 <h2>Reviews</h2>
+
 <% @user.reviews.each do |review| %>
-    <h4>Movie: <%= review.movie.title %></h4>
+    <div id="review-text">
+    <h4>Movie: <%= link_to review.movie.title, movie_path(review.movie) %></h4>
     <h5><%= review.title %></h5>
     <%= review.content %>
 
-    <%= button_to "Delete Review", review, method: :delete %>
+    <%= button_to "Delete Review", review, method: :delete, class: "delete-review-btn" %>
+    </div>
 <%end%>
+
+</div>
+</div>

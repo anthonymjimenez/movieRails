@@ -1,5 +1,6 @@
 <div class="wrapper">
-<div class='title'><h1><%= @movie[:title] %></h1></div>
+
+<div class='title' id='title'><h1><%= @movie[:title] %></h1></div>
 
 <% if @current_user.errors.any? %>
   <% @current_user.errors.full_messages.each do |error| %>
@@ -9,12 +10,15 @@
 
 <div class= 'show-image'><%= image_tag "https://image.tmdb.org/t/p/w200#{@movie.poster}" %></div>
 <div class= "info">
-<h2>Overview:</h2>
-<p><%= @movie.overview %> </p>
 
-<h2>Release Date:</h2>
+<h2 id="overview-title">Overview:</h2>
+<div id="overview">
+<p id= "overview-text"><%= @movie.overview %> </p>
+</div>
+
+<div class= "release-date">Release Date:
 <%= @movie.release_date%><br>
-
+</div>
 <h3>Favorites: <%= @movie.favorites.count %></h3>
 </div>
 
@@ -29,7 +33,7 @@
 </div>
 
 <div class= "reviews">
-<h3>Reviews</h3>
+<h3 id="review">Reviews</h3>
 <div class = 'review-wrap'>
 <% @movie.reviews.each do |review| %>
     
@@ -40,7 +44,7 @@
 </div>
 
 <div class= "review-form">
-<h2>Write A Review</h2>
+<h2 id= "write">Write A Review</h2>
 <%= form_tag '/reviews' do %>
     <br>
   
@@ -53,7 +57,7 @@
     <%= label_tag :content %>
     <%= text_area_tag :content  %><br>
 
-    <%= submit_tag "Post Review" %>
+   <%= submit_tag "Post Review", class: "post-review-btn" %>
 <%end%>
 </div>
 </div>

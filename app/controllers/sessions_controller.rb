@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :authorized?, only: [:new_login, :login]
     # def reset_page_count
     #     # session[:view_count] = 0
     #     session.delete(:view_count)
@@ -22,7 +23,7 @@ class SessionsController < ApplicationController
         #compare passwords
         if @user && @user.authenticate(params[:session][:password])
           session[:user_id] = @user.id 
-          redirect_to bananas_path
+          redirect_to movies_path
         else 
           flash[:error] = "Password or Email did not match"
           redirect_to new_login_path

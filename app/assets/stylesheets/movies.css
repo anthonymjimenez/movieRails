@@ -2,13 +2,19 @@
     font-family: blockbuster;
     src: url("Blockbuster 2.ttf");
   } */
-
+  @font-face{
+    font-family: blockbuster;
+    src: url("Blockbuster.ttf");
+  }
 .movie-header {
-    color: rebeccapurple;
-    font-size: 70px;
+    color: rgb(180, 54, 54);
+    font-size: 25px;
     text-align: center;
+    font-family: blockbuster;
    
 }
+
+
 
 .signed_in {
     text-decoration: none;
